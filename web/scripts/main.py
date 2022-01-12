@@ -20,5 +20,5 @@ import os
 import shutil
 
 
-def run():def run():
+def run():
     print("Test")
