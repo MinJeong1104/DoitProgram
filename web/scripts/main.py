@@ -35,7 +35,7 @@ def run():
   # 파일 다운로드 경로 변경
   op = Options()
   op.add_experimental_option('prefs', {
-      'download.default_directory': downloadPath
+      'download.default_directory': '/home/ec2-user/Downloads')
   })
 
   # 최대화면 변경
@@ -43,9 +43,16 @@ def run():
 
   #headless 설정하기 (웹페이지를 띄우지 않아도 되게 함)
   op.add_argument('headless')
+  op.add_argument('--no-sandbox')
+  op.add_argument('--disable-dev-shm-usage')
+  op.add_argument('blink-settings=imagesEnabled=false')
+  op.add_argument('--disable-gpu')
+  op.add_argument("--remote-debugging-port=9222")
+  op.add_experimental_option("excludeSwitches", ["enable-automation"])
+  op.add_experimental_option('useAutomationExtension', False)
 
   # 드라이버 실행
-  driver = webdriver.Chrome(path, chrome_options=op)
+  driver = webdriver.Chrome(options=op,executable_path='/usr/local/bin/chromedriver')
   driver.get(url)
   time.sleep(2)
 
