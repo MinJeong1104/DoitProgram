@@ -8,11 +8,6 @@
 beautifulsoup, selenium, pillow, selenium_screenshot
 자신의 chrome 버전과 맞는 chrome driver
 '''
-from bs4 import BeautifulSoup
-from selenium import webdriver
-from selenium.webdriver.chrome.options import Options
-from selenium.webdriver.common.action_chains import ActionChains
-from selenium.webdriver.common.keys import Keys
 
 def run():
     print("Test")
