@@ -13,12 +13,6 @@ from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.common.keys import Keys
-from PIL import Image  # pip install pillow
-from Screenshot import Screenshot_Clipping  # pip install selenium_screenshot
-import time
-import os
-import shutil
-
 
 def run():
     print("Test")
