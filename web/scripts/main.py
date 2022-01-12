@@ -35,7 +35,7 @@ def run():
   # 파일 다운로드 경로 변경
   op = Options()
   op.add_experimental_option('prefs', {
-      'download.default_directory': '/home/ec2-user/Downloads')
+      'download.default_directory': '/home/ec2-user/Downloads'
   })
 
   # 최대화면 변경
