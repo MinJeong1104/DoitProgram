@@ -79,7 +79,7 @@ WSGI_APPLICATION = 'web.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'applan',
+        'NAME': 'android-plan-db',
         'USER': 'start23',
         'PASSWORD': 'ewhastart23',
         'HOST': 'applan.cryaditlm9jj.us-east-2.rds.amazonaws.com',
