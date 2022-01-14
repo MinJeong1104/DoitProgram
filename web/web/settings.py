@@ -79,11 +79,14 @@ WSGI_APPLICATION = 'web.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'Project',
-        'USER': 'root',
-        'PASSWORD': 'tkfkddl12',
-        'HOST': 'localhost',
-        'PORT': '3306'
+        'NAME': 'applan',
+        'USER': 'start23',
+        'PASSWORD': 'ewhastart23',
+        'HOST': 'applan.cryaditlm9jj.us-east-2.rds.amazonaws.com',
+        'PORT': '3306',
+        'OPTIONS':{
+            'init_command': 'SET sql_mode="STRICT_TRANS_TABLES"'
+        }
 
     }
 }
