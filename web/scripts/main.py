@@ -29,7 +29,7 @@ def run():
   print("2021 - 겨울계절1차 : 1, 2021 - 2학기 : 2, ... , 2015 - 1학기 : 28 \n 반드시 숫자로만 입력해야 합니다! \n")
   semesterNum = input("학기를 설정해주세요. (1~28) : ")
   path = r"/usr/local/bin/chromedriver"  # chrome driver 저장 위치를 알려줍니다. ****************************
-  downloadPath = r'/home/mjb/myvenv/bin/downloading'  # 로컬 컴퓨터 저장위치를 설정합니다.**************************
+  downloadPath = r'/home/ec2-user/Downlodas'  # 로컬 컴퓨터 저장위치를 설정합니다.**************************
 
 
 
