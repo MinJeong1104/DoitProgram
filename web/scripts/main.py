@@ -13,6 +13,7 @@ from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.common.keys import Keys
 from PIL import Image  # pip install pillow
 from Screenshot import Screenshot_Clipping  # pip install selenium_screenshot
+from datetime import datetime
 import time
 import os
 import shutil
@@ -242,6 +243,7 @@ def run():
 
                           # 꼭 time sleep이 필요함.
                           time.sleep(2)
+                          crawled_time = datetime.now()
                           # 파일명 변경은 selenium에서 할 수 없기에 따로 코드를 짜야 합니다.
                           # 나중에 다른 python 파일로 분류하면 좋을 것 같습니다.
 
@@ -271,6 +273,7 @@ def run():
                           shutil.move(os.path.join(downloadPath, filename),
                                       os.path.join(downloadPath, new_filename + number + "." + fileEx))
                           time.sleep(1)
+                          Class(number=classNum, title=className,subnum=number, professor=professor, downloadPath=downloadPath, filename=new_filename, crawled_time=crawled_time).save()
 
                   # 현재 화면에 없는 element과 상호작용할 수 없습니다.
                   # 따라서 전체 화면의 브라우저 스크롤 가장 밑으로 내립니다. *강의계획안 사이트에는 전체 스크롤과 그리드 스크롤이 있습니다.
