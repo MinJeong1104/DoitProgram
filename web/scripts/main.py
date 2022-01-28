@@ -33,8 +33,6 @@ def run():
   downloadPath = r'/home/ec2-user/Downlodas'  # 로컬 컴퓨터 저장위치를 설정합니다.**************************
 
 
-
-
   # 파일 다운로드 경로 변경
   op = Options()
   op.add_experimental_option('prefs', {
@@ -273,6 +271,20 @@ def run():
                           shutil.move(os.path.join(downloadPath, filename),
                                       os.path.join(downloadPath, new_filename + number + "." + fileEx))
                           time.sleep(1)
+
+                          df = tabula.read_pdf(file_path, pages='all', stream=True, lattice=False,encoding='Windows 1252')
+
+                          def pdf_extract_info(file):
+                              dst = os.path.dirname(file)
+                              # dst 디렉토리 생성 - csv 파일 저장
+                              dst = "tables"
+                              if not os.path.isdir(dst):
+                                  os.mkdir(dst)
+                              else:
+                                  tabula.convert_into(file, dst + "/p1("+count+").csv", pages='all', output_format="csv",
+                                                      stream=True, lattice=False)
+                          if (fileEx=="pdf")
+                            pdf_extract_info(downloadPath+new_filename+number+"."+fileEx)
                           Class(number=classNum, title=className,subnum=number, professor=professor, downloadPath=downloadPath, filename=new_filename, crawled_time=crawled_time).save()
 
                   # 현재 화면에 없는 element과 상호작용할 수 없습니다.
@@ -319,6 +331,8 @@ def run():
   # 이후 일정 주기로 해당 학기의 파일을 다시 일괄적으로 다운받아 갱신합니다.
   # 학기 초일수록 자주, 학기가 시작된 이후에는 드물게 갱신하도록 구현하게 될 예정입니다.
   time.sleep(100)
+
+
 
   """
 앞으로의 과제
