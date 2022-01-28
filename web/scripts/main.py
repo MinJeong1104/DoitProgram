@@ -273,7 +273,7 @@ def run():
                                       os.path.join(downloadPath, new_filename + number + "." + fileEx))
                           time.sleep(1)
 
-                          df = tabula.read_pdf(file_path, pages='all', stream=True, lattice=False,encoding='Windows 1252')
+                          
 
                           def pdf_extract_info(file):
                               dst = os.path.dirname(file)
@@ -286,6 +286,7 @@ def run():
                                                       stream=True, lattice=False)
                           if (fileEx=="pdf"):
                               tbpath=downloadPath+"\\"+new_filename+number+"."+fileEx
+                              df = tabula.read_pdf(tbpath, pages='all', stream=True, lattice=False,encoding='Windows 1252')
                               pdf_extract_info(tbpath)
                           Class(number=classNum, title=className,subnum=number, professor=professor, downloadPath=downloadPath, filename=new_filename, crawled_time=crawled_time).save()
 
