@@ -14,6 +14,7 @@ from selenium.webdriver.common.keys import Keys
 from PIL import Image  # pip install pillow
 from Screenshot import Screenshot_Clipping  # pip install selenium_screenshot
 from datetime import datetime
+import tabula
 import time
 import os
 import shutil
