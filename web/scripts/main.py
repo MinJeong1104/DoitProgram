@@ -285,7 +285,8 @@ def run():
                                   tabula.convert_into(file, dst + "/p1("+count+").csv", pages='all', output_format="csv",
                                                       stream=True, lattice=False)
                           if (fileEx=="pdf"):
-                              pdf_extract_info(downloadPath+new_filename+number+"."+fileEx)
+                              tbpath=downloadPath+"\\"+new_filename+number+"."+fileEx)
+                              pdf_extract_info(tbpath)
                           Class(number=classNum, title=className,subnum=number, professor=professor, downloadPath=downloadPath, filename=new_filename, crawled_time=crawled_time).save()
 
                   # 현재 화면에 없는 element과 상호작용할 수 없습니다.
