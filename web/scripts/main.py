@@ -286,7 +286,7 @@ def run():
                                                       stream=True, lattice=False)
                           if (fileEx=="pdf"):
                               tbpath=os.path.join(downloadPath,new_filename+number+"."+fileEx)
-                              df = tabula.read_pdf(tbpath, pages='all', stream=True, lattice=False,encoding='cp1252')
+                              df = tabula.read_pdf(tbpath, pages='all', stream=True, lattice=False,encoding='utf-8')
                               pdf_extract_info(tbpath)
                           Class(number=classNum, title=className,subnum=number, professor=professor, downloadPath=downloadPath, filename=new_filename, crawled_time=crawled_time).save()
 
