@@ -45,6 +45,7 @@ def run():
 
   #headless 설정하기 (웹페이지를 띄우지 않아도 되게 함)
   op.add_argument('headless')
+  op.add_argument('--disable-dev-shm-usage')
 
   # 드라이버 실행
   driver = webdriver.Chrome(path, chrome_options=op)
