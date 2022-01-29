@@ -283,7 +283,7 @@ def run():
                               if not os.path.isdir(dst):
                                   os.mkdir(dst)
                               else:
-                                  tabula.convert_into(file, dst + "/p1("+count+").csv", pages='all', output_format="csv",
+                                  tabula.convert_into(file, dst + "/p1("+str(count)+").csv", pages='all', output_format="csv",
                                                       stream=True, lattice=False)
                           if (fileEx=="pdf"):
                               tbpath=os.path.join(downloadPath,new_filename+number+"."+fileEx)
