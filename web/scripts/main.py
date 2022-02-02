@@ -6,23 +6,23 @@
 beautifulsoup, selenium, pillow, selenium_screenshot
 자신의 chrome 버전과 맞는 chrome driver
 '''
+import os
+import shutil
+import time
+from datetime import datetime
+
+from AClass.models import Class
+from Screenshot import Screenshot_Clipping  # pip install selenium_screenshot
 from bs4 import BeautifulSoup
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.common.keys import Keys
-from PIL import Image  # pip install pillow
-from Screenshot import Screenshot_Clipping  # pip install selenium_screenshot
-from datetime import datetime
-import tabula
-import time
-import os
-import shutil
-from AClass.models import Class
-from web.scripts import ImgMerge
-from web.scripts import DataExtractor
-from web.scripts import FileTransformer
-from web.scripts import KorTextPreprocessor
+
+from DataExtractor import standard_location, extract_information, make_string
+from KorTextPreprocessor import spacing_kkma,spacing_all, kor_preprocessing, kor_all_preprocessing
+from FileTransformer import pdf_to_jpg
+from KorImgTextExtractor import extract_txt_from_img
 
 
 def run():
