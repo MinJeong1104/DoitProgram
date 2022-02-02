@@ -19,6 +19,14 @@ import time
 import os
 import shutil
 from AClass.models import Class
+import FileTransformer
+import ImgMerge
+import KorImgTextExtractor
+import DataExtractor
+import KorTextPreprocessor
+
+
+
 def run():
   
   url = "https://eureka.ewha.ac.kr/eureka/my/public.do?pgId=P531005519"  # 강의계획안 사이트입니다.
@@ -45,7 +53,6 @@ def run():
 
   #headless 설정하기 (웹페이지를 띄우지 않아도 되게 함)
   op.add_argument('headless')
-  op.add_argument('--disable-dev-shm-usage')
 
   # 드라이버 실행
   driver = webdriver.Chrome(path, chrome_options=op)
@@ -274,9 +281,9 @@ def run():
                                       os.path.join(downloadPath, new_filename + number + "." + fileEx))
                           time.sleep(1)
 
-                          
 
-                          def pdf_extract_info(file):
+
+                          """  def pdf_extract_info(file):
                               dst = os.path.dirname(file)
                               # dst 디렉토리 생성 - csv 파일 저장
                               dst = "tables"
@@ -288,7 +295,20 @@ def run():
                           if (fileEx=="pdf"):
                               tbpath=os.path.join(downloadPath,new_filename+number+"."+fileEx)
                               df = tabula.read_pdf(tbpath, pages='all', stream=True, lattice=False,encoding='utf-8')
-                              pdf_extract_info(tbpath)
+                              pdf_extract_info(tbpath) """
+                          if (fileEx == "pdf"):
+                              tbpath = os.path.join(downloadPath, new_filename + number + "." + fileEx)
+                              imgPATH = FileTransformer.pdf_to_jpg(tbpath)  # 이미지 파일 경로.
+                              merged_imgPATH = ImgMerge.img_merge(imgPATH)  # merged된 이미지 파일 경로
+                              text_bound_list = KorImgTextExtractor.extract_txt_from_img(
+                                  merged_imgPATH)  # 최초 text bound list
+
+                              std = DataExtractor.standard_location(text_bound_list)
+                              info_list = DataExtractor.extract_information(text_bound_list, std)
+                              string_list = DataExtractor.make_string(info_list)
+
+                              preprocessed_kor_list = KorTextPreprocessor.kor_all_preprocessing(string_list)
+                              print(preprocessed_kor_list)
                           Class(number=classNum, title=className,subnum=number, professor=professor, downloadPath=downloadPath, filename=new_filename, crawled_time=crawled_time).save()
 
                   # 현재 화면에 없는 element과 상호작용할 수 없습니다.
