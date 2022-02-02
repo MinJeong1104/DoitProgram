@@ -19,12 +19,10 @@ import time
 import os
 import shutil
 from AClass.models import Class
-import FileTransformer
-import ImgMerge
-import KorImgTextExtractor
-import DataExtractor
-import KorTextPreprocessor
-
+from web.scripts import ImgMerge
+from web.scripts import DataExtractor
+from web.scripts import FileTransformer
+from web.scripts import KorTextPreprocessor
 
 
 def run():
@@ -298,9 +296,9 @@ def run():
                               pdf_extract_info(tbpath) """
                           if (fileEx == "pdf"):
                               tbpath = os.path.join(downloadPath, new_filename + number + "." + fileEx)
-                              imgPATH = FileTransformer.pdf_to_jpg(tbpath)  # 이미지 파일 경로.
+                              imgPATH = pdf_to_jpg(tbpath)  # 이미지 파일 경로.
                               merged_imgPATH = ImgMerge.img_merge(imgPATH)  # merged된 이미지 파일 경로
-                              text_bound_list = KorImgTextExtractor.extract_txt_from_img(
+                              text_bound_list = extract_txt_from_img(
                                   merged_imgPATH)  # 최초 text bound list
 
                               std = DataExtractor.standard_location(text_bound_list)
