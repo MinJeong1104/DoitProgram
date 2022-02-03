@@ -7,7 +7,7 @@
 import os
 
 #word to pdf 코드에 필요한 라이브러리
-import comtypes
+"""import comtypes"""
 import ntpath
 from pdf2jpg import pdf2jpg
 
@@ -23,7 +23,7 @@ def pdf_to_jpg(file):
     #이미지 파일 저장된 dir 위치를 return한다. 그래야 이 return 값을 받은 imgTextExtractor이 dir 내 이미지에서 text 추출한다.
     return (file+'_dir')
 
-
+"""
 #word 파일을 먼저 pdf로 바꿔준다.
 def word_to_pdf(file):
     dest = os.path.dirname(file)
@@ -40,6 +40,7 @@ def word_to_pdf(file):
 
 def word_to_jpg(file):
     pdf_to_jpg(word_to_pdf(file))
+    """
 
 #pdf_to_jpg('C:/Users/wonai/mystatus/Doit_program/test1.pdf')
 
