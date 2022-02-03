@@ -19,11 +19,10 @@ from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.common.keys import Keys
 
-from DataExtractor import standard_location, extract_information, make_string
-from KorTextPreprocessor import spacing_kkma,spacing_all, kor_preprocessing, kor_all_preprocessing
-from FileTransformer import pdf_to_jpg
-from KorImgTextExtractor import extract_txt_from_img
-
+from . import DataExtractor 
+from . import KorTextPreprocessor 
+from . import FileTransformer
+from . import KorImgTextExtractor 
 
 def run():
   
