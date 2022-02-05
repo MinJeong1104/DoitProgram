@@ -2,7 +2,9 @@ from django.shortcuts import render
 from .models import Class
 from rest_framework import viewsets
 from .serializers import ClassSerializers
-
+from django.views.decorators.csrf import csrf_exempt
+from rest_framework.parsers import JSONParser
+from django.http import HttpResponse, JsonResponse
 
 # Create your views here.
 
@@ -15,3 +17,40 @@ def index(requests):
 class ClassViewSet(viewsets.ModelViewSet):
     queryset = Class.objects.all()
     serializer_class = ClassSerializers
+
+@csrf_exempt
+def class_info(request):
+    if request.method == 'GET':
+        queryset = Class.objects.all()
+        serializer = ClassSerializers(queryset, many=True)
+        return JsonResponse(serializer.data, safe=False)
+
+    elif request.method == 'POST':
+        data = JSONParser().parse(request)
+        serializer = ClassSerializers(data=data)
+        if serializer.is_valid():
+            serializer.save()
+            return JsonResponse(serializer.data, status=201)
+        return JsonResponse(serializer.errors, status=400)
+
+
+@csrf_exempt
+def class_action(request, pk):
+
+    obj = Class.objects.get(pk=pk)
+
+    if request.method == 'GET':
+        serializer = ClassSerializers(obj)
+        return JsonResponse(serializer.data, safe=False)
+
+    elif request.method == 'PUT':
+        data = JSONParser().parse(request)
+        serializer = ClassSerializers(obj, data=data)
+        if serializer.is_valid():
+            serializer.save()
+            return JsonResponse(serializer.data, status=201)
+        return JsonResponse(serializer.errors, status=400)
+
+    elif request.method == 'DELETE':
+        obj.delete()
+        return HttpResponse(status=204)

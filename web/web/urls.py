@@ -28,5 +28,7 @@ router.register("classes", AClass.views.ClassViewSet)
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', index),
-    path('api/',include(router.urls))
+    path('api/',include(router.urls)),
+    path('class_info/',views.class_info)
+    path('class_action//<int:pk>/', views.class_action)
 ]
