@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from AClass.views import index
+from AClass.views import index, class_info, class_action
 from rest_framework import routers
 import AClass.views
 
@@ -29,6 +29,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', index),
     path('api/',include(router.urls)),
-    path('class_info/',views.class_info),
-    path('class_action/<int:pk>/', views.class_action)
+    path('class_info/',class_info),
+    path('class_action/<int:pk>/',class_action)
 ]
