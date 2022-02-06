@@ -247,7 +247,7 @@ def run():
 
                           # 꼭 time sleep이 필요함.
                           time.sleep(2)
-                          crawled_time = datetime.now()
+                          #crawled_time = datetime.now()
                           # 파일명 변경은 selenium에서 할 수 없기에 따로 코드를 짜야 합니다.
                           # 나중에 다른 python 파일로 분류하면 좋을 것 같습니다.
 
@@ -279,7 +279,7 @@ def run():
                           time.sleep(1)
 
 
-
+                            #tabular 로 pdf->csv
                           """  def pdf_extract_info(file):
                               dst = os.path.dirname(file)
                               # dst 디렉토리 생성 - csv 파일 저장
@@ -306,7 +306,7 @@ def run():
 
                               preprocessed_kor_list = KorTextPreprocessor.kor_all_preprocessing(string_list)
                               print(preprocessed_kor_list)
-                          Class(number=classNum, title=className,subnum=number, professor=professor, downloadPath=downloadPath, filename=new_filename, crawled_time=crawled_time).save()
+                          Class(number=classNum, title=className,subnum=number, professor=professor, downloadPath=downloadPath, filename=new_filename).save()
 
                   # 현재 화면에 없는 element과 상호작용할 수 없습니다.
                   # 따라서 전체 화면의 브라우저 스크롤 가장 밑으로 내립니다. *강의계획안 사이트에는 전체 스크롤과 그리드 스크롤이 있습니다.

@@ -18,6 +18,7 @@ class ClassViewSet(viewsets.ModelViewSet):
     queryset = Class.objects.all()
     serializer_class = ClassSerializers
 
+#일반적인 강의 조회(GET)/생성(POST)입니다.
 @csrf_exempt
 def class_info(request):
     if request.method == 'GET':
@@ -34,6 +35,7 @@ def class_info(request):
         return JsonResponse(serializer.errors, status=400)
 
 
+#특정 id의 강의 조회 / 수정입니다.
 @csrf_exempt
 def class_action(request, pk):
 
