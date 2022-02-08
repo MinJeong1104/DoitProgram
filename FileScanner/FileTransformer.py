@@ -11,7 +11,7 @@ import comtypes
 import ntpath
 from pdf2jpg import pdf2jpg
 
-import win32com.client
+#import win32com.client
 
 #pdf 파일을 jpg로 바꿔준다.
 #pdf가 여러장일 경우 dir을 생성하여 그 안에 이미지 여러 장 생성.
