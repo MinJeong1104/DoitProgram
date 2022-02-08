@@ -13,7 +13,7 @@ from pdf2jpg import pdf2jpg
 
 #hwp to pdf 코드에 필요한 라이브러리
 
-import win32com.client as win32  # 한/글 열 수 있는 모듈
+#import win32com.client as win32  # 한/글 열 수 있는 모듈
 
 def pdf_to_jpg(file):
     dest = os.path.dirname(file)
