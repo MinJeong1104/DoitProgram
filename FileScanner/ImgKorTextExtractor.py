@@ -19,7 +19,7 @@ import pytesseract
 from PIL import Image
 
 def img_extract_kor(file): #파라미터는 이미지파일 절대경로
-    pytesseract.pytesseract.tesseract_cmd = r"테서렉트 위치 절대경로"
+    pytesseract.pytesseract.tesseract_cmd = r"/home/ec2-user/myenv/lib/python3.7/site-packages"
     text = pytesseract.image_to_string(Image.open(file), lang="kor")
     return text
 
