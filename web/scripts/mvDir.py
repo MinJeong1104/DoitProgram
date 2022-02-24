@@ -2,7 +2,7 @@
 #본인 컴퓨터에 한글이 설치 되지 않아서 한글 파일은 실행을 못하는 중.
 import os
 import shutil
-import win32com.client
+#import win32com.client
 from docx2pdf import convert  # 라이브러리 import
 
 #file = "C:/Users/wonai/NLPprogram/testpdf.pdf"
@@ -30,7 +30,7 @@ def moveDir(file):
         return pdf_dest
 
 
-    elif ext == ".hwp":
+    """elif ext == ".hwp":
         hwp = win32com.client.gencache.EnsureDispatch('HWPFrame.HwpObject')
         hwp.RegisterModule('FilePathCheckDLL', 'SecurityModule')
 
@@ -42,7 +42,7 @@ def moveDir(file):
         hwp.HAction.Execute("FileSaveAs_S", hwp.HParameterSet.HFileOpenSave.HSet)
 
         hwp.Quit()
-        return pdf_dest
+        return pdf_dest"""
 
     else:
         print("ext not supported!!") ##워드 한글 pdf 아닌 경우.
