@@ -22,6 +22,9 @@ from selenium.webdriver.common.keys import Keys
 from . import KorTextPreprocessor, DataExtractor, ImgMerge
 from .FileTransformer import pdf_to_jpg
 from .KorImgTextExtractor import extract_txt_from_img
+from .extractTable import pdf_extract_table_info
+from .mvDir import moveDir
+from .pdfTojpg import img_merge
 
 
 def run():
@@ -293,19 +296,12 @@ def run():
                               tbpath=os.path.join(downloadPath,new_filename+number+"."+fileEx)
                               df = tabula.read_pdf(tbpath, pages='all', stream=True, lattice=False,encoding='utf-8')
                               pdf_extract_info(tbpath) """
-                          if (fileEx == "pdf"):
-                              tbpath = os.path.join(downloadPath, new_filename + number + "." + fileEx)
-                              imgPATH = pdf_to_jpg(tbpath)  # 이미지 파일 경로.
-                              merged_imgPATH = ImgMerge.img_merge(imgPATH)  # merged된 이미지 파일 경로
-                              text_bound_list = extract_txt_from_img(
-                                  merged_imgPATH)  # 최초 text bound list
-
-                              std = DataExtractor.standard_location(text_bound_list)
-                              info_list = DataExtractor.extract_information(text_bound_list, std)
-                              string_list = DataExtractor.make_string(info_list)
-
-                              preprocessed_kor_list = KorTextPreprocessor.kor_all_preprocessing(string_list)
-                              print(preprocessed_kor_list)
+                          tbpath = os.path.join(downloadPath, new_filename + number + "." + fileEx)
+                          pdf_file = moveDir(tbpath)
+                          pdf_extract_table_info(pdf_file)
+                          merged_img = img_merge(pdf_to_jpg(pdf_file))
+                          word_list = extract_txt_from_img(merged_img)
+                          print(word_list)
                           Class(number=classNum, title=className,subnum=number, professor=professor, downloadPath=downloadPath, filename=new_filename, crawled_time=crawled_time).save()
 
                   # 현재 화면에 없는 element과 상호작용할 수 없습니다.

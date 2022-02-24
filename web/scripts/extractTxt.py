@@ -1,9 +1,45 @@
 # -*- coding: utf-8 -*-
 
-#img text extractor에서 받은 text list를 input으로 받고
-#output으로는 줄글 정보를 출력한다.
-
+import os
+import io
 import re
+from google.cloud import vision
+#file_name = r"C:/Users/wonai/NLPprogram/Extract/testpdf/merged.jpg" ## pdfTojpg 리턴값 바로 받으면 됨.
+
+def extract_txt_from_img(file_name):
+
+    client = vision.ImageAnnotatorClient()
+
+    with io.open(file_name, 'rb') as image_file:
+        content = image_file.read()
+
+    image = vision.Image(content=content)
+
+    response = client.text_detection(image=image)
+    texts = response.text_annotations
+
+    text_list =[]
+    #text_list 하나에는 한 jpg 파일의 모든 [단어, 단어bound] 원소쌍이 들어있다.
+    for text in texts:
+        word_list =[]
+        #print('\n"{}"'.format(text.description))
+        word_list.append(text.description)
+        vertices = (['({},{})'.format(vertex.x, vertex.y)
+                    for vertex in text.bounding_poly.vertices])
+        word_list.append(vertices)
+        #print('bounds: {}'.format(','.join(vertices)))
+        text_list.append(word_list)
+
+    if response.error.message:
+        raise Exception(
+            '{}\nFor more info on error messages, check: '
+            'https://cloud.google.com/apis/design/errors'.format(
+                 response.error.message))
+
+    return text_list
+    #파일의 모든 단어와 단어의 bound를 list에 담아 리턴한다.
+#print(extract_txt_from_img('C:/Users/wonai/mystatus/Doit_program/test1.pdf_dir/merged.jpg'))
+
 
 def str_to_bound(word):
     #word는 ['단어', [(LT), (RT), (RB), (LB)]] list이다.
@@ -38,7 +74,7 @@ def standard_location(text_list):
     #text 추출 기준이 될 단어 위치 반환.
     # [['total', [(),(),(),()]], [['교과목'],(),(),(),()], 개설, 수업, 면담] 값으로 리턴
     standard_list = []
-    standard_name_list = ['Description', 'Prerequisites', 'Format', 'Objectives', 'Required', 'Supplementary', 'optional','Policies' ]
+    standard_name_list = ['Description', 'Prerequisites', 'Format', 'Objectives', 'Evaluation', 'Required', 'Supplementary', 'optional','Policies' ]
 
     total = str_to_bound(text_list[0])
     standard_list.append(['total_bound', total[1]])
@@ -76,15 +112,19 @@ def make_string(info_list):
         str = ""
         for i in range(1, len(info_list[index])):
             str += info_list[index][i][0]
+            str += " "
         str_list.append(str)
         string_list.append(str_list)
     return string_list
     #info_list[0][1~끝까지][0]를 모아 string을 만들 거임.
 
 
+def extract_txt(file_name):
+    total_list = extract_txt_from_img(file_name)
+    standard_list = standard_location(total_list)
+    info_list = extract_information(total_list, standard_list)
+    information = make_string(info_list)
+    return information
 
-# mylist=
-#
-# std = standard_location(mylist)
-# info_list = extract_information(mylist, std)
-# print(make_string(info_list))
+
+#print(extract_txt(file_name))
