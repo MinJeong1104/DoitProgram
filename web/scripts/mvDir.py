@@ -29,6 +29,8 @@ def moveDir(file):
         convert(file, dest+"/"+file_name+".pdf")
         return pdf_dest
 
+    else:
+        print("ext not supported!!") ##워드 한글 pdf 아닌 경우
 
     """elif ext == ".hwp":
         hwp = win32com.client.gencache.EnsureDispatch('HWPFrame.HwpObject')
@@ -44,5 +46,3 @@ def moveDir(file):
         hwp.Quit()
         return pdf_dest"""
 
-    else:
-        print("ext not supported!!") ##워드 한글 pdf 아닌 경우.
