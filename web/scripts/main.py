@@ -19,12 +19,7 @@ from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.common.keys import Keys
 
-from . import KorTextPreprocessor, DataExtractor, ImgMerge
-from .FileTransformer import pdf_to_jpg
-from .KorImgTextExtractor import extract_txt_from_img
-from .extractTable import pdf_extract_table_info
-from .mvDir import moveDir
-from .pdfTojpg import img_merge
+from . import extractTable, extractTxt, mvDir, pdfTojpg, preprocessorKor, preprocessEng,saveCSV
 
 
 def run():
