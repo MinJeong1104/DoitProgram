@@ -11,4 +11,4 @@ class Class(models.Model):
     professor = models.CharField(max_length=200, null=True, default='')
     downloadPath = models.CharField(max_length=200, null=True, default='')
     filename = models.CharField(max_length=200, null=True, default='')
-    crawled_time = models.DateTimeField(auto_now=True)
+    crawled_time = models.DateTimeField(auto_now=True,null=True)
