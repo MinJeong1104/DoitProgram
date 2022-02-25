@@ -20,6 +20,11 @@ from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.common.keys import Keys
 
 from . import extractTable, extractTxt, mvDir, pdfTojpg, preprocessorKor, preprocessEng,saveCSV
+from .extractTable import pdf_extract_table_info
+from .extractTxt import extract_txt_from_img
+from .mvDir import moveDir
+from .pdfTojpg import img_merge
+from .pdfTojpg import pdf_to_jpg
 
 
 def run():
