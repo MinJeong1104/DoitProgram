@@ -297,8 +297,8 @@ def run():
                               df = tabula.read_pdf(tbpath, pages='all', stream=True, lattice=False,encoding='utf-8')
                               pdf_extract_info(tbpath) """
                           tbpath = os.path.join(downloadPath, new_filename + number + "." + fileEx)
-                          pdf_file = moveDir(tbpath)
-                          pdf_extract_table_info(pdf_file)
+                          #pdf_file = moveDir(tbpath)
+                          pdf_file=pdf_extract_table_info(tbpath)
                           merged_img = img_merge(pdf_to_jpg(pdf_file))
                           word_list = extract_txt_from_img(merged_img)
                           print(word_list)
