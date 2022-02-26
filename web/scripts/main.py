@@ -297,11 +297,12 @@ def run():
                               df = tabula.read_pdf(tbpath, pages='all', stream=True, lattice=False,encoding='utf-8')
                               pdf_extract_info(tbpath) """
                           tbpath = os.path.join(downloadPath, new_filename + number + "." + fileEx)
+                          if(fileEx!="hwp"):
                           #pdf_file = moveDir(tbpath)
-                          pdf_file=pdf_extract_table_info(tbpath)
-                          merged_img = img_merge(pdf_to_jpg(pdf_file))
-                          word_list = extract_txt_from_img(merged_img)
-                          print(word_list)
+                              pdf_file=pdf_extract_table_info(tbpath)
+                              merged_img = img_merge(pdf_to_jpg(pdf_file))
+                              word_list = extract_txt_from_img(merged_img)
+                              print(word_list)
                           Class(number=classNum, title=className,subnum=number, professor=professor, downloadPath=downloadPath, filename=new_filename, crawled_time=crawled_time).save()
 
                   # 현재 화면에 없는 element과 상호작용할 수 없습니다.
