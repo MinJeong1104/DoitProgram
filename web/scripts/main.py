@@ -297,7 +297,7 @@ def run():
                               df = tabula.read_pdf(tbpath, pages='all', stream=True, lattice=False,encoding='utf-8')
                               pdf_extract_info(tbpath) """
                           tbpath = os.path.join(downloadPath, new_filename + number + "." + fileEx)
-                          if(fileEx!="hwp"):
+                          if(fileEx=="pdf"):
                           #pdf_file = moveDir(tbpath)
                               pdf_file=pdf_extract_table_info(tbpath)
                               merged_img = img_merge(pdf_to_jpg(pdf_file))
