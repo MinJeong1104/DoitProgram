@@ -298,8 +298,9 @@ def run():
                               pdf_extract_info(tbpath) """
                           tbpath = os.path.join(downloadPath, new_filename + number + "." + fileEx)
                           if(fileEx!="hwp"):
-                              print(tbpath)
+                              print("tbpath="+tbpath)
                               pdf_file = moveDir(tbpath)
+                              print("pdf_file="+pdf_file)
                               pdf_extract_table_info(pdf_file)
                               merged_img = img_merge(pdf_to_jpg(pdf_file))
                               word_list = extract_txt_from_img(merged_img)
