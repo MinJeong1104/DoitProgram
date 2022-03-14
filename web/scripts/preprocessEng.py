@@ -28,4 +28,4 @@ def summarzied_eng(word_list):
 
     return summarzied_pages
 
-print(summarzied_eng(word_list))
+#print(summarzied_eng(word_list))
