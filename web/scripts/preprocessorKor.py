@@ -16,7 +16,7 @@ def space_kor(word_list):
     for txt in word_list:
         new_sent_word = []
         print("txt[0]="+txt[0])
-        print("txt[0]=" + txt[1])
+        print("txt[1]=" + txt[1])
         new_sent_word.append(txt[0])
         new_sent_word.append(txt[1].replace(" ", ''))
         new_sent_list.append(new_sent_word)
