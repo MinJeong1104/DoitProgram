@@ -25,6 +25,8 @@ from .extractTxt import extract_txt_from_img
 from .mvDir import moveDir
 from .pdfTojpg import img_merge
 from .pdfTojpg import pdf_to_jpg
+from .preprocessEng import summarzied_eng
+from .preprocessorKor import space_kor, summarzied_kor
 
 
 def run():
@@ -304,7 +306,23 @@ def run():
                               pdf_extract_table_info(pdf_file)
                               merged_img = img_merge(pdf_to_jpg(pdf_file))
                               word_list = extract_txt_from_img(merged_img)
-                              print(word_list)
+
+                              def isEnglishOrKorean(input_s):
+                                  k_count = 0
+                                  e_count = 0
+                                  for c in input_s:
+                                      if ord('가') <= ord(c) <= ord('힣'):
+                                          k_count += 1
+                                      elif ord('a') <= ord(c.lower()) <= ord('z'):
+                                          e_count += 1
+                                  return "k" if k_count > e_count else "e"
+
+                              if(isEnglishOrKorean(word_list[0])==k):
+                                  spacing_list=space_kor(word_list)
+                                  summarized_pages=summarzied_kor(spacing_list)
+                              else:
+                                  summarized_pages=summarzied_eng(word_list)
+                              print(summarized_pages)
                           Class(number=classNum, title=className,subnum=number, professor=professor, downloadPath=downloadPath, filename=new_filename, crawled_time=crawled_time).save()
 
                   # 현재 화면에 없는 element과 상호작용할 수 없습니다.
