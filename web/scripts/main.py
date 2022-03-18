@@ -317,7 +317,7 @@ def run():
                                           e_count += 1
                                   return "k" if k_count > e_count else "e"
 
-                              if(isEnglishOrKorean(word_list[0][0])==k):
+                              if(isEnglishOrKorean(word_list[0][0])=="k"):
                                   spacing_list=space_kor(word_list)
                                   summarized_pages=summarzied_kor(spacing_list)
                               else:
