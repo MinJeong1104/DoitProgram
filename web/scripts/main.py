@@ -320,9 +320,11 @@ def run():
                               if(isEnglishOrKorean(word_list[0][0])=="k"):
                                   spacing_list=space_kor(word_list)
                                   summarized_pages=summarzied_kor(spacing_list)
+                                  print(summarized_pages)
                               else:
                                   summarized_pages=summarzied_eng(word_list)
-                              print(summarized_pages)
+                                  print(summarized_pages)
+
                           Class(number=classNum, title=className,subnum=number, professor=professor, downloadPath=downloadPath, filename=new_filename, crawled_time=crawled_time).save()
 
                   # 현재 화면에 없는 element과 상호작용할 수 없습니다.
