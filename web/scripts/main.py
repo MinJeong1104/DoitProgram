@@ -315,13 +315,14 @@ def run():
                               pdf_extract_table_info(pdf_file)
                               merged_img = img_merge(pdf_to_jpg(pdf_file))
                               word_list = extract_txt_from_img(merged_img)
+                              print("word_list"=+"str(word_list))
 
                           
                               if(isEnglishOrKorean(word_list[0][0])=="k"):
                                   print("result=k")
                                   spacing_list=space_kor(word_list)
                                   summarized_pages=summarzied_kor(spacing_list)
-                                  print(summarized_pages)
+                                  print("sum="+str(summarized_pages))
                               else:
                                   print("result=e")
                                   summarized_pages=summarzied_eng(word_list)
