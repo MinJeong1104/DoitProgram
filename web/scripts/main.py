@@ -28,7 +28,16 @@ from .pdfTojpg import pdf_to_jpg
 from .preprocessEng import summarzied_eng
 from .preprocessorKor import space_kor, summarzied_kor
 
-
+def isEnglishOrKorean(input_s):
+  k_count = 0
+  e_count = 0
+  for c in input_s:
+    if ord('가') <= ord(c) <= ord('힣'):
+      k_count += 1
+    elif ord('a') <= ord(c.lower()) <= ord('z'):
+      e_count += 1
+      return "k" if k_count > e_count else "e"
+    
 def run():
   
   url = "https://eureka.ewha.ac.kr/eureka/my/public.do?pgId=P531005519"  # 강의계획안 사이트입니다.
@@ -307,16 +316,7 @@ def run():
                               merged_img = img_merge(pdf_to_jpg(pdf_file))
                               word_list = extract_txt_from_img(merged_img)
 
-                              def isEnglishOrKorean(input_s):
-                                  k_count = 0
-                                  e_count = 0
-                                  for c in input_s:
-                                      if ord('가') <= ord(c) <= ord('힣'):
-                                          k_count += 1
-                                      elif ord('a') <= ord(c.lower()) <= ord('z'):
-                                          e_count += 1
-                                  return "k" if k_count > e_count else "e"
-
+                          
                               if(isEnglishOrKorean(word_list[0][0])=="k"):
                                   print("result=k")
                                   spacing_list=space_kor(word_list)
