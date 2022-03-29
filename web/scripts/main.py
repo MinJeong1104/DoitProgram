@@ -28,7 +28,7 @@ from .pdfTojpg import pdf_to_jpg
 from .preprocessEng import summarzied_eng
 from .preprocessorKor import space_kor, summarzied_kor
 import cloudmersive_convert_api_client
-form cloudmersive_convert_api_client.rest import ApiException
+from cloudmersive_convert_api_client.rest import ApiException
 from pprint import pprint
 
 def run():
