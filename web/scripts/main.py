@@ -41,7 +41,7 @@ def run():
     api_response = api_instance.convert_document_autodetect_to_jpg(input_file, quality=quality)
     print(api_response)
   except ApiException as e:
-    print("Exception")
+    print(api_response)
 
   url = "https://eureka.ewha.ac.kr/eureka/my/public.do?pgId=P531005519"  # 강의계획안 사이트입니다.
 
