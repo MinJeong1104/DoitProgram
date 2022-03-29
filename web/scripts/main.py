@@ -35,7 +35,7 @@ def run():
   configuration = cloudmersive_convert_api_client.Configuration()
   configuration.api_key['ApiKey']='324531eb-b6e8-4f97-bb5e-8427e4998a16'
   api_instance = cloudmersive_convert_api_client.ConvertDocumentApi(cloudmersive_convert_api_client.ApiClient(configuration))
-  input_file= r'/home/ec2-user/web/scripts/nari1.hwp'
+  input_file= r'/home/ec2-user/web/scripts/nari.hwp'
   quality = 56
   try:
     api_response = api_instance.convert_document_autodetect_to_jpg(input_file, quality=quality)
