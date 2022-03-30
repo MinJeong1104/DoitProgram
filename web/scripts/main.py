@@ -35,6 +35,7 @@ def run():
   encoded_text = f.openstream('PrvText').read()
   decoded_text = encoded_text.decode('UTF-16')
   print(decoded_text)
+
   url = "https://eureka.ewha.ac.kr/eureka/my/public.do?pgId=P531005519"  # 강의계획안 사이트입니다.
 
   '''
