@@ -27,11 +27,11 @@ from .pdfTojpg import img_merge
 from .pdfTojpg import pdf_to_jpg
 from .preprocessEng import summarzied_eng
 from .preprocessorKor import space_kor, summarzied_kor
-import olefille
+import olefile
 import pandas as pd
 
 def run():
-  f = olefile.OleFileIO('/home/ec2-user/web/scripts/hari.hwp')
+  f = olefile.OleFileIO('/home/ec2-user/web/scripts/nari.hwp')
   encoded_text = f.openstream('PrvText').read()
   decoded_text = encoded_text.decode('UTF-16')
   print(decoded_text)
