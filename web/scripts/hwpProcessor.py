@@ -14,7 +14,7 @@ def get_hwp_text(f):
 
 
     header = f.openstream("FileHeader")
-    header_data = header.read()
+    header_data = header.read(24)
     nums = []
     for d in dirs:
         if d[0] == "BodyText":
