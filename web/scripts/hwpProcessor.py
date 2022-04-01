@@ -42,7 +42,7 @@ def get_hwp_text(f):
             rec_data = data[i + 4:i + 4 + rec_len]
             print(rec_data)
             print("rec_data"+str(rec_data))
-            section_text += rec_data.decode('utf-16')
+            section_text += rec_data.decode('utf-16', errors='ignore')
             section_text += "\n"
             print("section_text"+str(section_text))
             i += 4 + rec_len
