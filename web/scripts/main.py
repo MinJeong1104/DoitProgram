@@ -32,7 +32,9 @@ import pandas as pd
 
 def run():
   f = olefile.OleFileIO('/home/ec2-user/web/scripts/nari.hwp')
-  f_data = f.read()
+  dirs = f.listdir()
+  header = f.openstream("FileHeader")
+  header_data = header.read()
   nums = []
   for d in dirs:
       if d[0] == "BodyText":
