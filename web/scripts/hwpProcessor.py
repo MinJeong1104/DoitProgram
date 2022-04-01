@@ -26,7 +26,7 @@ def get_hwp_text(f):
     for section in sections:
         bodytext = f.openstream(section)
         data = bodytext.read()
-        print("data = "+str(data))
+
 
         # 각 Section 내 text 추출
         section_text = ""
@@ -41,6 +41,7 @@ def get_hwp_text(f):
                 rec_data = data[i + 4:i + 4 + rec_len]
                 section_text += rec_data.decode('utf-16')
                 section_text += "\n"
+                print(section_text)
 
             i += 4 + rec_len
         text += section_text
