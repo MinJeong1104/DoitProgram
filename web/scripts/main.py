@@ -65,7 +65,7 @@ def run():
   print(text)
 
 
-url = "https://eureka.ewha.ac.kr/eureka/my/public.do?pgId=P531005519"  # 강의계획안 사이트입니다.
+  url = "https://eureka.ewha.ac.kr/eureka/my/public.do?pgId=P531005519"  # 강의계획안 사이트입니다.
 
   '''
   필요한 정보를 설정합니다.
