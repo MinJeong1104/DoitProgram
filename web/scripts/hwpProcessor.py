@@ -5,6 +5,12 @@ def get_hwp_text(f):
 
     f = olefile.OleFileIO('/home/ec2-user/web/scripts/nari.hwp')
     dirs = f.listdir()
+    # HWP 파일 검증
+    if ["FileHeader"] not in dirs or \
+            ["\x05HwpSummaryInformation"] not in dirs:
+        raise Exception("Not Valid HWP.")
+
+
     header = f.openstream("FileHeader")
     header_data = header.read()
     nums = []
