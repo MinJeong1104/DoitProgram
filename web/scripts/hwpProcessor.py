@@ -26,6 +26,7 @@ def get_hwp_text(f):
     for section in sections:
         bodytext = f.openstream(section)
         data = bodytext.read()
+        print(data)
 
 
         # 각 Section 내 text 추출
