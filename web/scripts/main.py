@@ -28,6 +28,7 @@ from .pdfTojpg import pdf_to_jpg
 from .preprocessEng import summarzied_eng
 from .preprocessorKor import space_kor, summarzied_kor
 import olefile
+import struct
 import pandas as pd
 
 def run():
