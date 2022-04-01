@@ -32,11 +32,40 @@ import pandas as pd
 
 def run():
   f = olefile.OleFileIO('/home/ec2-user/web/scripts/nari.hwp')
-  encoded_text = f.openstream('PrvText').read()
-  decoded_text = encoded_text.decode('UTF-16')
-  print(decoded_text)
+  f_data = f.read()
+  nums = []
+  for d in dirs:
+      if d[0] == "BodyText":
+          nums.append(int(d[1][len("Section"):]))
+          sections = ["BodyText/Section" + str(x) for x in sorted(nums)]
 
-  url = "https://eureka.ewha.ac.kr/eureka/my/public.do?pgId=P531005519"  # 강의계획안 사이트입니다.
+      # 전체 text 추출
+      text = ""
+      for section in sections:
+          bodytext = f.openstream(section)
+          data = bodytext.read()
+
+          # 각 Section 내 text 추출
+          section_text = ""
+          i = 0
+          size = len(unpacked_data)
+          while i < size:
+              header = struct.unpack_from("<I", unpacked_data, i)[0]
+              rec_type = header & 0x3ff
+              rec_len = (header >> 20) & 0xfff
+
+              if rec_type in [67]:
+                  rec_data = unpacked_data[i + 4:i + 4 + rec_len]
+                  section_text += rec_data.decode('utf-16')
+                  section_text += "\n"
+
+              i += 4 + rec_len
+          text += section_text
+          text += "\n"
+  print(text)
+
+
+url = "https://eureka.ewha.ac.kr/eureka/my/public.do?pgId=P531005519"  # 강의계획안 사이트입니다.
 
   '''
   필요한 정보를 설정합니다.
