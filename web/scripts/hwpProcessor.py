@@ -46,7 +46,8 @@ def get_hwp_text(f):
                 section_text += rec_data.decode('utf-16')
                 section_text += "\n"
                 print("section_text"+str(section_text))
-
+            else:
+                print('rec_type is not in 67')
             i += 4 + rec_len
         text += section_text
         text += "\n"
