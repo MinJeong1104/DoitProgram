@@ -9,6 +9,8 @@ def get_hwp_text(f):
     if ["FileHeader"] not in dirs or \
             ["\x05HwpSummaryInformation"] not in dirs:
         raise Exception("Not Valid HWP.")
+    else:
+        print("Valid HWP")
 
 
     header = f.openstream("FileHeader")
