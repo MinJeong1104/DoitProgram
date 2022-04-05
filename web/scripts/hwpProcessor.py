@@ -25,7 +25,7 @@ def get_hwp_text(f):
     text = ""
     for section in sections:
         bodytext = f.openstream(section)
-        data = bodytext.read()
+        data = bodytext.read().decode('utf-16-be', errors='ignore')
         print(data)
 
 
