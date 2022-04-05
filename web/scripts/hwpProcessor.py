@@ -12,7 +12,7 @@ def get_hwp_text(f):
     else:
         print("Valid HWP")
 
-
+    #헤더 읽기
     header = f.openstream("FileHeader")
     header_data = header.read()
     nums = []
@@ -34,7 +34,7 @@ def get_hwp_text(f):
         i = 0
         size = len(data)
         while i < size:
-            header = struct.unpack_from("<I", data, i)[0]
+            header = struct.unpack_from("<I", bytes(data), i)[0]
             print("header"+str(header))
             rec_type = header & 0x3ff
             print("rec_tpye"+str(rec_type))
