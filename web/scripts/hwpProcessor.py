@@ -40,7 +40,7 @@ def get_hwp_text(f):
             print("rec_tpye"+str(rec_type))
             rec_len = (header >> 20) & 0xfff
             print("rec_len"+str(rec_len))
-            rec_data = data[i + 4:i + 4 + rec_len]
+            rec_data = bytes(data[i + 4:i + 4 + rec_len],encoding='UTF-16')
             print("rec_data"+str(rec_data))
             section_text += rec_data.decode('UTF-16', errors='ignore')
             section_text += "\n"
