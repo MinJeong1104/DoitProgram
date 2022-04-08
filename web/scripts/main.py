@@ -21,7 +21,7 @@ from selenium.webdriver.common.keys import Keys
 
 from . import extractTable, extractTxt, mvDir, pdfTojpg, preprocessorKor, preprocessEng,saveCSV
 from .extractTable import pdf_extract_table_info
-from .extractTxt import extract_txt_from_img
+from .extractTxt import extract_txt
 from .mvDir import moveDir
 from .pdfTojpg import img_merge
 from .pdfTojpg import pdf_to_jpg
@@ -311,7 +311,8 @@ def run():
                               print("pdf_file="+str(pdf_file))
                               pdf_extract_table_info(pdf_file)
                               merged_img = img_merge(pdf_to_jpg(pdf_file))
-                              word_list = extract_txt_from_img(merged_img)
+                              word_list = extract_txt(merged_img)
+                              print("word_list="+str(word_list))
 
                               def isEnglishOrKorean(input_s):
                                   k_count = 0
