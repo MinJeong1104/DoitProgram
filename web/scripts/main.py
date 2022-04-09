@@ -330,7 +330,7 @@ def run():
                                   print("sumpages="+str(summarized_pages))
                               else:
                                   summarized_pages=summarzied_eng(word_list)
-                                  #print(summarized_pages)
+                                  print("sumpages="+str(summarized_pages))
 
                           Class(number=classNum, title=className,subnum=number, professor=professor, downloadPath=downloadPath, filename=new_filename, crawled_time=crawled_time).save()
 
