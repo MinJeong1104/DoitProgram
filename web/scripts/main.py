@@ -31,6 +31,7 @@ from .hwpProcessor import get_hwp_text
 import olefile
 import struct
 import pandas as pd
+import img2pdf
 
 def run():
   f='/home/ec2-user/web/scripts/nari.hwp'
