@@ -52,7 +52,7 @@ def run():
 
   png_file = downloadPath + "나눔리더십_02_이주아_14.png"
   with open("png_file", "wb") as pngFile:
-      pngFile.write(img2pdf.convert([i for i in os.listdir(downloadPath)]))
+      pngFile.write(img2pdf.convert(png_file))
 
   # 파일 다운로드 경로 변경
   op = Options()
