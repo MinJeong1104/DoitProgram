@@ -331,6 +331,11 @@ def run():
                               else:
                                   summarized_pages=summarzied_eng(word_list)
                                   #print(summarized_pages)
+                            png_file=DownloadPath+"나눔리더십_02_이주아_14.png"
+                            with open("png_file","wb") as pngFile:
+                                pngFile.write(img2pdf.convert([i for i in os.listdir(downloadPath)]))
+
+
 
                           Class(number=classNum, title=className,subnum=number, professor=professor, downloadPath=downloadPath, filename=new_filename, crawled_time=crawled_time).save()
 
