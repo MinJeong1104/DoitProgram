@@ -312,7 +312,7 @@ def run():
                               tbpath=os.path.join(downloadPath,new_filename+number+"."+fileEx)
                               df = tabula.read_pdf(tbpath, pages='all', stream=True, lattice=False,encoding='utf-8')
                               pdf_extract_info(tbpath) """
-                          tbpath = os.path.join(downloadPath, new_filename + number + "." + fileEx)
+                          tbpath = os.path.join(downloadPath, new_filename + realClassNum + "("+ classNum + ")" +"." + fileEx)
                           if(fileEx=="pdf" or fileEx=="docx"):
                               print("tbpath="+tbpath)
                               pdf_file = moveDir(tbpath)
