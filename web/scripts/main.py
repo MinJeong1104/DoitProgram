@@ -342,7 +342,7 @@ def run():
 
 
 
-                          Class(number=realclassNum, title=className,subnum=classNum, professor=professor, downloadPath=downloadPath, filename=new_filename, crawled_time=crawled_time).save()
+                          Class(number=realClassNum, title=className,subnum=classNum, professor=professor, downloadPath=downloadPath, filename=new_filename, crawled_time=crawled_time).save()
 
                   # 현재 화면에 없는 element과 상호작용할 수 없습니다.
                   # 따라서 전체 화면의 브라우저 스크롤 가장 밑으로 내립니다. *강의계획안 사이트에는 전체 스크롤과 그리드 스크롤이 있습니다.
