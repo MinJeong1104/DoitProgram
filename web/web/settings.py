@@ -40,7 +40,7 @@ INSTALLED_APPS = [
     'AClass',
     'django_extensions',
     'rest_framework',
-    'drf_firebase_auth'
+    'firebase_auth'
 ]
 
 MIDDLEWARE = [
