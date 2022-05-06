@@ -175,6 +175,10 @@ def run():
                       'mainframe_VFrameSet_WorkFrame_Child__form_div_Work_grxMain_body_gridrow_' + str(
                           count) + '_cell_' + str(count) + '_3').text
                   # classNum은 학수번호입니다.
+                  realClassNum = driver.find_element_by_id(
+                      'mainframe_VFrameSet_WorkFrame_Child__form_div_Work_grxMain_body_gridrow_' + str(
+                          count) + '_cell_' + str(count) + '_1').text
+                  # classNum은 분반입니다.
                   classNum = driver.find_element_by_id(
                       'mainframe_VFrameSet_WorkFrame_Child__form_div_Work_grxMain_body_gridrow_' + str(
                           count) + '_cell_' + str(count) + '_2').text
@@ -338,7 +342,7 @@ def run():
 
 
 
-                          Class(number=classNum, title=className,subnum=number, professor=professor, downloadPath=downloadPath, filename=new_filename, crawled_time=crawled_time).save()
+                          Class(number=realclassNum, title=className,subnum=classNum, professor=professor, downloadPath=downloadPath, filename=new_filename, crawled_time=crawled_time).save()
 
                   # 현재 화면에 없는 element과 상호작용할 수 없습니다.
                   # 따라서 전체 화면의 브라우저 스크롤 가장 밑으로 내립니다. *강의계획안 사이트에는 전체 스크롤과 그리드 스크롤이 있습니다.
