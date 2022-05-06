@@ -50,9 +50,9 @@ def run():
   path = r"/usr/local/bin/chromedriver"  # chrome driver 저장 위치를 알려줍니다. ****************************
   downloadPath = r'/home/ec2-user/Downlodas'  # 로컬 컴퓨터 저장위치를 설정합니다.**************************
 
-  png_file = downloadPath + "/나눔리더십_02_이주아_14.png"
+  '''png_file = downloadPath + "/나눔리더십_02_이주아_14.png"
   with open("png_file", "wb") as pngFile:
-      pngFile.write(img2pdf.convert(png_file))
+      pngFile.write(img2pdf.convert(png_file))'''
 
   # 파일 다운로드 경로 변경
   op = Options()
