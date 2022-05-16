@@ -31,6 +31,7 @@ from .hwpProcessor import get_hwp_text
 import olefile
 import struct
 import pandas as pd
+from PIL import Image
 
 def run():
   f='/home/ec2-user/web/scripts/nari.hwp'
@@ -49,6 +50,9 @@ def run():
   path = r"/usr/local/bin/chromedriver"  # chrome driver 저장 위치를 알려줍니다. ****************************
   downloadPath = r'/home/ec2-user/Downlodas'  # 로컬 컴퓨터 저장위치를 설정합니다.**************************
 
+  '''png_file = downloadPath + "/나눔리더십_02_이주아_14.png"
+  with open("png_file", "wb") as pngFile:
+      pngFile.write(img2pdf.convert(png_file))'''
 
   # 파일 다운로드 경로 변경
   op = Options()
@@ -171,6 +175,10 @@ def run():
                       'mainframe_VFrameSet_WorkFrame_Child__form_div_Work_grxMain_body_gridrow_' + str(
                           count) + '_cell_' + str(count) + '_3').text
                   # classNum은 학수번호입니다.
+                  realClassNum = driver.find_element_by_id(
+                      'mainframe_VFrameSet_WorkFrame_Child__form_div_Work_grxMain_body_gridrow_' + str(
+                          count) + '_cell_' + str(count) + '_1').text
+                  # classNum은 분반입니다.
                   classNum = driver.find_element_by_id(
                       'mainframe_VFrameSet_WorkFrame_Child__form_div_Work_grxMain_body_gridrow_' + str(
                           count) + '_cell_' + str(count) + '_2').text
@@ -304,7 +312,7 @@ def run():
                               tbpath=os.path.join(downloadPath,new_filename+number+"."+fileEx)
                               df = tabula.read_pdf(tbpath, pages='all', stream=True, lattice=False,encoding='utf-8')
                               pdf_extract_info(tbpath) """
-                          tbpath = os.path.join(downloadPath, new_filename + number + "." + fileEx)
+                          tbpath = os.path.join(downloadPath, new_filename + realClassNum + "("+ classNum + ")" +"." + fileEx)
                           if(fileEx=="pdf" or fileEx=="docx"):
                               print("tbpath="+tbpath)
                               pdf_file = moveDir(tbpath)
@@ -327,12 +335,14 @@ def run():
                               if(isEnglishOrKorean(word_list[0][0])=="k"):
                                   spacing_list=space_kor(word_list)
                                   summarized_pages=summarzied_kor(spacing_list)
-                                  print("sumpages="+str(summarized_pages))
+                                  #print(summarized_pages)
                               else:
                                   summarized_pages=summarzied_eng(word_list)
-                                  print("sumpages="+str(summarized_pages))
+                                  #print(summarized_pages)
 
-                          Class(number=classNum, title=className,subnum=number, professor=professor, downloadPath=downloadPath, filename=new_filename, crawled_time=crawled_time).save()
+
+
+                          Class(number=realClassNum, title=className,subnum=classNum, professor=professor, downloadPath=downloadPath, filename=new_filename, crawled_time=crawled_time).save()
 
                   # 현재 화면에 없는 element과 상호작용할 수 없습니다.
                   # 따라서 전체 화면의 브라우저 스크롤 가장 밑으로 내립니다. *강의계획안 사이트에는 전체 스크롤과 그리드 스크롤이 있습니다.
