@@ -34,8 +34,11 @@ import pandas as pd
 from PIL import Image
 
 def run():
-  f='/home/ec2-user/web/scripts/nari.hwp'
-  print(get_hwp_text(f))
+  f='/home/ec2-user/web/Downlodas/day.csv'
+  """Class(number=23, title=Test,subnum=23, professor=test, downloadPath='/home/ec2-user/web/Downlodas/day.csv', filename=day.csv, crawled_time=datetime.now()).save()"""
+  data = pd.read_csv("./day.csv", encoding='EUC-KR')
+  print(data)
+
 
 
 
