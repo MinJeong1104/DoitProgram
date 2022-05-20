@@ -36,7 +36,7 @@ from PIL import Image
 def run():
   f='/home/ec2-user/Downlodas/day.csv'
   """Class(number=23, title=Test,subnum=23, professor=test, downloadPath='/home/ec2-user/web/Downlodas/day.csv', filename=day.csv, crawled_time=datetime.now()).save()"""
-  data = pd.read_csv("./day.csv", encoding='EUC-KR')
+  data = pd.read_csv(f, encoding='EUC-KR')
   print(data)
 
 
