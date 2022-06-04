@@ -5,7 +5,7 @@ from django.db import models
 #number = 학수번호, subnum = 분반, title=강의명, professor=교수명, downloadPath= 가상환경 내 위치, filename=위치 내 파일명, crawled_time=크롤링된 시간
 
 class Class(models.Model):
-    idnum=models.CharField(max_length=200,null=True,default='',primary_key=True)
+    idnum=models.CharField(max_length=200,null=False,default='',primary_key=True)
     number = models.CharField(max_length=200,null=True,default='')
     title = models.CharField(max_length=200, null=True, default='')
     subnum= models.CharField(max_length=50,null=True,default='')
