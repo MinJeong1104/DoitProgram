@@ -12,6 +12,7 @@ import time
 from datetime import datetime
 
 from AClass.models import Class
+from AClass.models import Todo
 from Screenshot import Screenshot_Clipping  # pip install selenium_screenshot
 from bs4 import BeautifulSoup
 from selenium import webdriver
@@ -44,7 +45,15 @@ def run():
   df_preprocessed = df[['날짜', '주요강의내용', '과제']].copy()
   df_preprocessed.dropna(how='all', inplace=True)
   df_preprocessed.reset_index(drop=True, inplace=True)
-  print(df_preprocessed)
+
+  df_records = df_preprocessed.to_dict('records')
+  instances = [Todo(
+      idnum='1001101',
+      days=df_records['날짜'],
+      activities=df_records['주요강의내용']
+  ) for record in df_preprocessed]
+
+  Todo.objects.bulk_create(instances)
 
 
 
