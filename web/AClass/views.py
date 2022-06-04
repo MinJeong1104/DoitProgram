@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import Class
+from .models import Todo
 from rest_framework import viewsets
 from .serializers import ClassSerializers
 from django.views.decorators.csrf import csrf_exempt
@@ -10,19 +10,19 @@ from django.http import HttpResponse, JsonResponse
 
 #화면에 index.html을 뿌려줍니다. 간단하게 class의 모든 객체들을 화면에 나타냅니다.
 def index(requests):
-    classes = Class.objects.all()
+    classes = Todo.objects.all()
     return render(requests, "index.html", {"classes":classes})
 
 #viewset은 여러 API 기능을 통합해 하나의 set로 제공합니다. 
 class ClassViewSet(viewsets.ModelViewSet):
-    queryset = Class.objects.all()
+    queryset = Todo.objects.all()
     serializer_class = ClassSerializers
 
 #일반적인 강의 조회(GET)/생성(POST)입니다.
 @csrf_exempt
 def class_info(request):
     if request.method == 'GET':
-        queryset = Class.objects.all()
+        queryset = Todo.objects.all()
         serializer = ClassSerializers(queryset, many=True)
         return JsonResponse(serializer.data, safe=False)
 
@@ -39,7 +39,7 @@ def class_info(request):
 @csrf_exempt
 def class_action(request, pk):
 
-    obj = Class.objects.get(pk=pk)
+    obj = Todo.objects.get(pk=pk)
 
     if request.method == 'GET':
         serializer = ClassSerializers(obj)

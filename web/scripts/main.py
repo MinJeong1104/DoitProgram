@@ -31,13 +31,20 @@ from .hwpProcessor import get_hwp_text
 import olefile
 import struct
 import pandas as pd
+import numpy as np
 from PIL import Image
 
 def run():
   f='/home/ec2-user/Downlodas/day.csv'
   """Class(number=23, title=Test,subnum=23, professor=test, downloadPath='/home/ec2-user/web/Downlodas/day.csv', filename=day.csv, crawled_time=datetime.now()).save()"""
-  data = pd.read_csv(f, encoding='EUC-KR')
-  print(data)
+  df = pd.DataFrame()
+  csv = pd.read_csv(f, encoding='EUC-KR')
+  df = pd.concat([df, csv], ignore_index=True)
+  df.rename(columns={'교재범위 &': '교재범위'}, inplace=True)
+  df_preprocessed = df[['날짜', '주요강의내용', '과제']].copy()
+  df_preprocessed.dropna(how='all', inplace=True)
+  df_preprocessed.reset_index(drop=True, inplace=True)
+  print(df_preprocessed)
 
 
 
@@ -345,7 +352,7 @@ def run():
 
 
 
-                          Class(number=realClassNum, title=className,subnum=classNum, professor=professor, downloadPath=downloadPath, filename=new_filename, crawled_time=crawled_time).save()
+                          Class(number=realClassNum, title=className,subnum=classNum, idnum= realClassNum+classNum, professor=professor, downloadPath=downloadPath, filename=new_filename, crawled_time=crawled_time).save()
 
                   # 현재 화면에 없는 element과 상호작용할 수 없습니다.
                   # 따라서 전체 화면의 브라우저 스크롤 가장 밑으로 내립니다. *강의계획안 사이트에는 전체 스크롤과 그리드 스크롤이 있습니다.
