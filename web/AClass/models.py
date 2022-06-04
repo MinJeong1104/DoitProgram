@@ -15,7 +15,7 @@ class Class(models.Model):
     crawled_time = models.DateTimeField(auto_now=True,null=True)
 
 class Todo(models.Model):
-    idnums - models.CharField(max_length=200, null=False, default='', primary_key=True)
+    idnums =models.CharField(max_length=200, null=False, default='', primary_key=True)
     days = models.CharField(max_length=50,null=True,default='')
     activities = models.CharField(max_length=50,null=True,default='')
     """idnum = models.ForeignKey(Class, on_delete=models.CASCADE)"""
