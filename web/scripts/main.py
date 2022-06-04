@@ -49,8 +49,8 @@ def run():
   df_records = df_preprocessed.to_dict('records')
   instances = [Todo(
       idnum='1001101',
-      days=df_records['날짜'],
-      activities=df_records['주요강의내용']
+      days=record['날짜'],
+      activities=record['주요강의내용']
   ) for record in df_preprocessed]
 
   Todo.objects.bulk_create(instances)
