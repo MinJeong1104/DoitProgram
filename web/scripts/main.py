@@ -51,7 +51,7 @@ def run():
       idnum='1001101',
       days=record['날짜'],
       activities=record['주요강의내용']
-  ) for record in df_preprocessed]
+  ) for record in df_records]
 
   Todo.objects.bulk_create(instances)
 
