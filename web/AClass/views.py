@@ -43,14 +43,14 @@ def class_action(request, pk):
 
     if request.method == 'GET':
         serializer = ClassSerializers(obj)
-        return JsonResponse(serializer.data, safe=False)
+        return JsonResponse(serializer.data, json_dumps_params={'ensure_ascii': False}, safe=False)
 
     elif request.method == 'PUT':
         data = JSONParser().parse(request)
         serializer = ClassSerializers(obj, data=data)
         if serializer.is_valid():
             serializer.save()
-            return JsonResponse(serializer.data, status=201)
+            return JsonResponse(serializer.data, json_dumps_params={'ensure_ascii': False}, status=201)
         return JsonResponse(serializer.errors, status=400)
 
     elif request.method == 'DELETE':
