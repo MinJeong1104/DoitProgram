@@ -44,8 +44,8 @@ def run():
   df = pd.concat([df, csv], ignore_index=True)
   df.rename(columns={'교재범위 &': '교재범위'}, inplace=True)
   df_preprocessed = df[['날짜', '주요강의내용', '과제']].copy()
-  df_preprocessed.dropna(how='all', inplace=True)
-  df_preprocessed = df_preprocessed.fillna(str(random.uniform(1,100)))
+  df_preprocessed = df_preprocessed.dropna(axis=0, subset=['날짜'], inplace=False)
+  df_preprocessed = df_preprocessed.fillna('')
   df_preprocessed.reset_index(drop=True, inplace=True)
 
   df_records = df_preprocessed.to_dict('records')
