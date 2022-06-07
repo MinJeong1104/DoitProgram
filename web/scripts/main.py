@@ -37,9 +37,9 @@ import numpy as np
 from PIL import Image
 
 def run():
-  """
+  '''
   f='/home/ec2-user/Downlodas/day.csv'
-  """Class(number=23, title=Test,subnum=23, professor=test, downloadPath='/home/ec2-user/web/Downlodas/day.csv', filename=day.csv, crawled_time=datetime.now()).save()"""
+  Class(number=23, title=Test,subnum=23, professor=test, downloadPath='/home/ec2-user/web/Downlodas/day.csv', filename=day.csv, crawled_time=datetime.now()).save()"""
   df = pd.DataFrame()
   csv = pd.read_csv(f, encoding='EUC-KR')
   df = pd.concat([df, csv], ignore_index=True)
@@ -58,7 +58,7 @@ def run():
 
   Todo.objects.bulk_create(instances)
 
-  """
+  '''
 
 
   url = "https://eureka.ewha.ac.kr/eureka/my/public.do?pgId=P531005519"  # 강의계획안 사이트입니다.
