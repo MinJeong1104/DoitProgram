@@ -13,6 +13,8 @@ class Class(models.Model):
     downloadPath = models.CharField(max_length=200, null=True, default='')
     filename = models.CharField(max_length=200, null=True, default='')
     crawled_time = models.DateTimeField(auto_now=True,null=True)
+    classroom = models.CharField(max_length=200, null=True, default='')
+    period = odels.CharField(max_length=200, null=True, default='')
 
 class Todo(models.Model):
     idnums =models.CharField(max_length=200, null=True, default='')

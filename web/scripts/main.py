@@ -37,6 +37,7 @@ import numpy as np
 from PIL import Image
 
 def run():
+  """
   f='/home/ec2-user/Downlodas/day.csv'
   """Class(number=23, title=Test,subnum=23, professor=test, downloadPath='/home/ec2-user/web/Downlodas/day.csv', filename=day.csv, crawled_time=datetime.now()).save()"""
   df = pd.DataFrame()
@@ -57,7 +58,7 @@ def run():
 
   Todo.objects.bulk_create(instances)
 
-
+  """
 
 
   url = "https://eureka.ewha.ac.kr/eureka/my/public.do?pgId=P531005519"  # 강의계획안 사이트입니다.
@@ -207,6 +208,16 @@ def run():
                   professor = driver.find_element_by_id(
                       'mainframe_VFrameSet_WorkFrame_Child__form_div_Work_grxMain_body_gridrow_' + str(
                           count) + '_cell_' + str(count) + '_8').text
+
+                  # 강의 별 강의실 변수
+                  classroom = driver.find_element_by_id(
+                      'mainframe_VFrameSet_WorkFrame_Child__form_div_Work_grxMain_body_gridrow_' + str(
+                          count) + '_cell_' + str(count) + '_13').text
+
+                  # 강의 별 교시 변수
+                  period = driver.find_element_by_id(
+                      'mainframe_VFrameSet_WorkFrame_Child__form_div_Work_grxMain_body_gridrow_' + str(
+                          count) + '_cell_' + str(count) + '_12').text
 
                   # 간혹 파일명에 들어가서는 안 되는 값이 있기에, 해당 문자를 다른 문자로 치환해줍니다.
                   # 예외 > \, /, :, *, <, >, |, \n(엔터)
@@ -363,7 +374,7 @@ def run():
 
 
 
-                          Class(number=realClassNum, title=className,subnum=classNum, idnum= realClassNum+classNum, professor=professor, downloadPath=downloadPath, filename=new_filename, crawled_time=crawled_time).save()
+                          Class(number=realClassNum, title=className,subnum=classNum, idnum= realClassNum+classNum, professor=professor, downloadPath=downloadPath, filename=new_filename, crawled_time=crawled_time, classroom=classroom, period=period).save()
 
                   # 현재 화면에 없는 element과 상호작용할 수 없습니다.
                   # 따라서 전체 화면의 브라우저 스크롤 가장 밑으로 내립니다. *강의계획안 사이트에는 전체 스크롤과 그리드 스크롤이 있습니다.
