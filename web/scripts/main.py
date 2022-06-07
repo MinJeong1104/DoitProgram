@@ -372,8 +372,7 @@ def run():
                                   summarized_pages=summarzied_eng(word_list)
                                   #print(summarized_pages)
 
-
-
+                          print(period + " " + classroom)
                           Class(number=realClassNum, title=className,subnum=classNum, idnum= realClassNum+classNum, professor=professor, downloadPath=downloadPath, filename=new_filename, crawled_time=crawled_time, classroom=classroom, period=period).save()
 
                   # 현재 화면에 없는 element과 상호작용할 수 없습니다.
