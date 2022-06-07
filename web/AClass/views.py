@@ -24,14 +24,14 @@ def class_info(request):
     if request.method == 'GET':
         queryset = Todo.objects.all()
         serializer = ClassSerializers(queryset, many=True)
-        return JsonResponse(serializer.data, safe=False)
+        return JsonResponse(serializer.data, json_dumps_params={'ensure_ascii': False}, safe=False)
 
     elif request.method == 'POST':
         data = JSONParser().parse(request)
         serializer = ClassSerializers(data=data)
         if serializer.is_valid():
             serializer.save()
-            return JsonResponse(serializer.data, status=201)
+            return JsonResponse(serializer.data, json_dumps_params={'ensure_ascii': False}, status=201)
         return JsonResponse(serializer.errors, status=400)
 
 
