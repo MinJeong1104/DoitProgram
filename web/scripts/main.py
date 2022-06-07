@@ -209,15 +209,15 @@ def run():
                       'mainframe_VFrameSet_WorkFrame_Child__form_div_Work_grxMain_body_gridrow_' + str(
                           count) + '_cell_' + str(count) + '_8').text
 
-                  # 강의 별 강의실 변수
-                  classroom = driver.find_element_by_id(
-                      'mainframe_VFrameSet_WorkFrame_Child__form_div_Work_grxMain_body_gridrow_' + str(
-                          count) + '_cell_' + str(count) + '_13').text
-
                   # 강의 별 교시 변수
                   period = driver.find_element_by_id(
                       'mainframe_VFrameSet_WorkFrame_Child__form_div_Work_grxMain_body_gridrow_' + str(
                           count) + '_cell_' + str(count) + '_12').text
+
+                  # 강의 별 강의실 변수
+                  classroom = driver.find_element_by_id(
+                      'mainframe_VFrameSet_WorkFrame_Child__form_div_Work_grxMain_body_gridrow_' + str(
+                          count) + '_cell_' + str(count) + '_13').text
 
                   # 간혹 파일명에 들어가서는 안 되는 값이 있기에, 해당 문자를 다른 문자로 치환해줍니다.
                   # 예외 > \, /, :, *, <, >, |, \n(엔터)
