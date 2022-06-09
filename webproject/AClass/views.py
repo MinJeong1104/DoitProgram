@@ -40,7 +40,7 @@ def class_info(request):
 @csrf_exempt
 def class_action(request, idnum):
 
-    obj = Todo.objects.filter(idnum = idnum);
+    obj = Todo.objects.filter(idnums = idnum);
 
     if request.method == 'GET':
         serializer = ClassSerializers(obj)
