@@ -18,7 +18,7 @@ class Class(models.Model):
 
 class Todo(models.Model):
     idnums = models.ForeignKey(Class, on_delete=models.CASCADE)
-    days = models.CharField(max_length=50,null=False,default='')
+    days = models.CharField(max_length=50,null=False,default='', primary_key=True)
     activities = models.CharField(max_length=50,null=True,default='')
     weeks = models.CharField(max_length=50, null=True, default='')
     Ranges = models.CharField(max_length=50,null=True,default='')
