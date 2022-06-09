@@ -24,3 +24,5 @@ class Todo(models.Model):
     Ranges = models.CharField(max_length=50,null=True,default='')
     Materials = models.CharField(max_length=50,null=True,default='')
     Assignments = models.CharField(max_length=50,null=True,default='')
+    classroom = models.ForeignKey(Class, on_delete=models.CASCADE)
+    period = models.ForeignKey(Class, on_delete=models.CASCADE)
