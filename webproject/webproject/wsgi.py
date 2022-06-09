@@ -1,5 +1,5 @@
 """
-WSGI config for webproject project.
+WSGI webproject for webproject project.
 
 It exposes the WSGI callable as a module-level variable named ``application``.
 

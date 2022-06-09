@@ -42,7 +42,6 @@ INSTALLED_APPS = [
     'django_extensions',
     'rest_framework',
     'sslserver',
-    'webproject',
 ]
 
 MIDDLEWARE = [
@@ -73,7 +72,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'config.wsgi.application'
+WSGI_APPLICATION = 'webproject.wsgi.application'
 
 
 # Database

@@ -1,5 +1,5 @@
 """
-ASGI config for webproject project.
+ASGI webproject for webproject project.
 
 It exposes the ASGI callable as a module-level variable named ``application``.
 
