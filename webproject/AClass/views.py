@@ -38,9 +38,9 @@ def class_info(request):
 
 #특정 id의 강의 조회 / 수정입니다.
 @csrf_exempt
-def class_action(request, idnum):
+def class_action(request, idnums):
 
-    obj = Todo.objects.filter(idnums = idnum);
+    obj = Todo.objects.filter(idnums = idnums);
 
     if request.method == 'GET':
         serializer = ClassSerializers(obj)

@@ -30,5 +30,5 @@ urlpatterns = [
     path('', index),
     path('api/',include(router.urls)),
     path('class_info/',class_info),
-    path('class_action/<str:idnum>/',class_action)
+    path('class_action/<str:idnums>/',class_action)
 ]
