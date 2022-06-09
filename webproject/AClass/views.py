@@ -43,7 +43,7 @@ def class_action(request, idnums):
     obj = Todo.objects.filter(idnums = idnums);
 
     if request.method == 'GET':
-        serializer = ClassSerializers(obj)
+        serializer = ClassSerializers(obj, many=True)
         return JsonResponse(serializer.data, json_dumps_params={'ensure_ascii': False}, safe=False)
 
     elif request.method == 'PUT':
