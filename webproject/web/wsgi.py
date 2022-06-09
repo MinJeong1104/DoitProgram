@@ -11,6 +11,8 @@ import os
 
 from django.core.wsgi import get_wsgi_application
 
+sys.path.append('/home/ec2-user/DoitProgram/webproject')
+
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'webproject.settings')
 
 application = get_wsgi_application()
