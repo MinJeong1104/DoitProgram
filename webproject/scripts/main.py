@@ -38,8 +38,8 @@ from PIL import Image
 
 def run():
 
-  f='/home/ec2-user/Downlodas/역사철학_20214_01_김은주.csv'
-  Class(number="20214", title="역사철학",subnum="01", idnums='2021401', professor="김은주", downloadPath='/home/ec2-user/Downlodas/역사철학_20214_01_김은주.csv', filename='역사철학_20214_01_김은주.csv', crawled_time=datetime.now(),period="3:30-4:45", classroom='포356').save()
+  f='/home/ec2-user/Downlodas/20214_01.csv'
+  Class(number="20214", title="역사철학",subnum="01", idnums='2021401', professor="김은주", downloadPath='/home/ec2-user/Downlodas/20214_01.csv', filename='역사철학_20214_01_김은주.csv', crawled_time=datetime.now(),period="3:30-4:45", classroom='포356').save()
   df = pd.DataFrame()
   csv = pd.read_csv(f, encoding='EUC-KR')
   df = pd.concat([df, csv], ignore_index=True)
