@@ -39,7 +39,7 @@ from PIL import Image
 def run():
 
   f='/home/ec2-user/Downlodas/2063601.csv'
-  Class(number="20636", title="다변량분석및실습",subnum="01", idnums='20636', professor="이은경", downloadPath='/home/ec2-user/Downlodas/2063601.csv', filename='다변량분석및실습_20636_01_이은경.csv', crawled_time=datetime.now(),period_start="3:30 PM", period_end="4:45 PM", classroom='비대면').save()
+  Class(number="20636", title="다변량분석및실습",subnum="01", idnums='2063601', professor="이은경", downloadPath='/home/ec2-user/Downlodas/2063601.csv', filename='다변량분석및실습_20636_01_이은경.csv', crawled_time=datetime.now(),period_start="3:30 PM", period_end="4:45 PM", classroom='비대면').save()
   df = pd.DataFrame()
   csv = pd.read_csv(f, encoding='EUC-KR')
   df = pd.concat([df, csv], ignore_index=True)
