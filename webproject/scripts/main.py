@@ -55,7 +55,8 @@ def run():
       idnums='2021401',
       days=record['날짜'],
       activities=record['주요강의내용'],
-      period='3:30 PM 4:45 PM',
+      period_start='3:30 PM ',
+      period_end='4:45 PM',
       classroom='포356'
   ) for record in df_records]
 
