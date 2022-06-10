@@ -38,20 +38,21 @@ from PIL import Image
 
 def run():
 
-  f='/home/ec2-user/Downlodas/day.csv'
-  Class(number=23, title=Test,subnum=23, professor=test, downloadPath='/home/ec2-user/webproject/Downlodas/day.csv', filename=day.csv, crawled_time=datetime.now()).save()
+  f='/home/ec2-user/Downlodas/역사철학_20214_01_김은주.csv'
+  Class(number="20214", title="역사철학",subnum="01", idnums='2021401', professor="김은주", downloadPath='/home/ec2-user/Downlodas/역사철학_20214_01_김은주.csv', filename='역사철학_20214_01_김은주.csv', crawled_time=datetime.now(),period="3:30-4:45", classroom='포356').save()
   df = pd.DataFrame()
   csv = pd.read_csv(f, encoding='EUC-KR')
   df = pd.concat([df, csv], ignore_index=True)
-  df.rename(columns={'교재범위 &': '교재범위'}, inplace=True)
-  df_preprocessed = df[['날짜', '주요강의내용', '과제']].copy()
+  df.rename(columns={'주요강의내용 및 자료, 과제(Topics &': '주요강의내용'}, inplace=True)
+  df_preprocessed = df[['날짜', '주요강의내용']].copy()
   df_preprocessed = df_preprocessed.dropna(axis=0, subset=['날짜'], inplace=False)
   df_preprocessed = df_preprocessed.fillna('')
   df_preprocessed.reset_index(drop=True, inplace=True)
 
+
   df_records = df_preprocessed.to_dict('records')
   instances = [Todo(
-      idnums='1001101',
+      idnums='20214',
       days=record['날짜'],
       activities=record['주요강의내용']
   ) for record in df_records]
