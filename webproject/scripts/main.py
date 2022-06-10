@@ -38,7 +38,7 @@ from PIL import Image
 
 def run():
 
-  f='/home/ec2-user/Downlodas/23650701.csv'
+  f='/home/ec2-user/Downlodas/3650701.csv'
   Class(number="36507", title="캡스톤디자인프로젝트B",subnum="01", idnums='3650701', professor="김현수", downloadPath='/home/ec2-user/Downlodas/3650701.csv', filename='캡스톤디자인프로젝트B_36507_01_김현수.csv', crawled_time=datetime.now(),period_start="12:30 PM", period_end="2:45 PM", classroom='공B101').save()
   df = pd.DataFrame()
   csv = pd.read_csv(f, encoding='EUC-KR')
