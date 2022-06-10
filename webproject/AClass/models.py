@@ -18,8 +18,8 @@ class Class(models.Model):
     period_end = models.CharField(max_length=200, null=True, default='')
 
 class Todo(models.Model):
-    idnums = models.CharField(max_length=200, null=True, default='')
     title = models.CharField(max_length=200, null=True, default='')
+    idnums = models.CharField(max_length=200, null=True, default='')
     days = models.CharField(max_length=50,null=False,default='', primary_key=True)
     activities = models.CharField(max_length=50,null=True,default='')
     weeks = models.CharField(max_length=50, null=True, default='')
