@@ -59,11 +59,11 @@ def run():
 
   Todo.objects.bulk_create(instances)
 
-  '''
+
 
 
   url = "https://eureka.ewha.ac.kr/eureka/my/public.do?pgId=P531005519"  # 강의계획안 사이트입니다.
-  '''
+
   '''
   필요한 정보를 설정합니다.
   path는 chrome driver의 설치 위치로 바꾸어주세요.
