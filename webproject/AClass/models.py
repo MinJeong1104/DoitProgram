@@ -22,7 +22,7 @@ class Todo(models.Model):
     title = models.CharField(max_length=200, null=True, default='')
     idnums = models.CharField(max_length=200, null=True, default='')
     days = models.CharField(max_length=50,null=False,default='')
-    activities = models.CharField(max_length=50,null=True,default='')
+    activities = models.CharField(max_length=500,null=True,default='')
     weeks = models.CharField(max_length=50, null=True, default='')
     Ranges = models.CharField(max_length=50,null=True,default='')
     Materials = models.CharField(max_length=50,null=True,default='')
