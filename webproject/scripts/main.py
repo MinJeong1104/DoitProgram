@@ -38,8 +38,8 @@ from PIL import Image
 
 def run():
 
-  f='/home/ec2-user/Downlodas/3565801.csv'
-  Class(number="35658", title="조성음악분석I",subnum="01", idnums='3565801', professor="안선현", downloadPath='/home/ec2-user/Downlodas/3565801.csv', filename='조성음악분석I_35658_01_안선현.csv', crawled_time=datetime.now(),period_start="2:00 PM", period_end="4:45 PM", classroom='음415').save()
+  f='/home/ec2-user/Downlodas/3495105.csv'
+  Class(number="34951", title="특수교육의이해",subnum="05", idnums='3495105', professor="이소영", downloadPath='/home/ec2-user/Downlodas/3495105.csv', filename='특수교육의이해_34951_05_이소영.csv', crawled_time=datetime.now(),period_start="9:30 AM", period_end="12:30 PM", classroom='비대면').save()
   df = pd.DataFrame()
   csv = pd.read_csv(f, encoding='EUC-KR')
   df = pd.concat([df, csv], ignore_index=True)
@@ -51,13 +51,13 @@ def run():
 
   df_records = df_preprocessed.to_dict('records')
   instances = [Todo(
-      idnums='3565801',
+      idnums='3495105',
       days=record['날짜'],
       activities=record['주요강의내용'],
-      period_start='2:00 PM ',
-      period_end='4:45 PM',
-      title='조성음악분석I',
-      classroom='음415'
+      period_start='9:30 AM ',
+      period_end='12:30 PM',
+      title='특수교육의이해',
+      classroom='비대면'
   ) for record in df_records]
 
   Todo.objects.bulk_create(instances)
