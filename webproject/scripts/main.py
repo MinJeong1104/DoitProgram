@@ -51,7 +51,7 @@ def run():
 
   df_records = df_preprocessed.to_dict('records')
   instances = [Todo(
-      idnums='36507',
+      idnums='3650701',
       days=record['날짜'],
       activities=record['주요강의내용'],
       period_start='12:30 PM ',
