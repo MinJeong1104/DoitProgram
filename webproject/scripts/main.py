@@ -38,12 +38,12 @@ from PIL import Image
 
 def run():
 
-  f='/home/ec2-user/Downlodas/3650701.csv'
-  Class(number="36507", title="캡스톤디자인프로젝트B",subnum="01", idnums='3650701', professor="김현수", downloadPath='/home/ec2-user/Downlodas/3650701.csv', filename='캡스톤디자인프로젝트B_36507_01_김현수.csv', crawled_time=datetime.now(),period_start="12:30 PM", period_end="2:45 PM", classroom='공B101').save()
+  f='/home/ec2-user/Downlodas/3693903.csv'
+  Class(number="36939", title="교육과정",subnum="03", idnums='3693903', professor="궁선혜", downloadPath='/home/ec2-user/Downlodas/3650701.csv', filename='교육과정_36903_03_궁선혜.csv', crawled_time=datetime.now(),period_start="2:00 PM", period_end="5:00 PM", classroom='교A414').save()
   df = pd.DataFrame()
   csv = pd.read_csv(f, encoding='EUC-KR')
   df = pd.concat([df, csv], ignore_index=True)
-  df.rename(columns={'강의 내용': '주요강의내용'}, inplace=True)
+  df.rename(columns={'주요강의내용 (Topics)':'주요강의내용'}, inplace=True)
   df_preprocessed = df[['날짜', '주요강의내용']].copy()
   df_preprocessed = df_preprocessed.dropna(axis=0, subset=['날짜'], inplace=False)
   df_preprocessed = df_preprocessed.fillna('')
@@ -51,13 +51,13 @@ def run():
 
   df_records = df_preprocessed.to_dict('records')
   instances = [Todo(
-      idnums='3650701',
+      idnums='3693903',
       days=record['날짜'],
       activities=record['주요강의내용'],
-      period_start='12:30 PM ',
-      period_end='2:00 PM',
-      title='캡스톤디자인프로젝트B',
-      classroom='공B101'
+      period_start='2:00 PM ',
+      period_end='5:00 PM',
+      title='교육과정',
+      classroom='교A414'
   ) for record in df_records]
 
   Todo.objects.bulk_create(instances)
