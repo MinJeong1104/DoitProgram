@@ -18,6 +18,7 @@ class Class(models.Model):
     period_end = models.CharField(max_length=200, null=True, default='')
 
 class Todo(models.Model):
+    id = models.AutoField(primary_key=True)
     title = models.CharField(max_length=200, null=True, default='')
     idnums = models.CharField(max_length=200, null=True, default='')
     days = models.CharField(max_length=50,null=False,default='')
