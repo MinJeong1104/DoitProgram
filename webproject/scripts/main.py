@@ -27,8 +27,8 @@ from .mvDir import moveDir
 from .pdfTojpg import img_merge
 from .pdfTojpg import pdf_to_jpg
 from .preprocessEng import summarzied_eng
-from .preprocessorKor import space_kor, summarzied_kor
-from .hwpProcessor import get_hwp_text
+'''from .preprocessorKor import space_kor, summarzied_kor
+from .hwpProcessor import get_hwp_text'''
 import olefile
 import struct
 import random
@@ -350,10 +350,12 @@ def run():
                               print("tbpath="+tbpath)
                               pdf_file = moveDir(tbpath)
                               print("pdf_file="+str(pdf_file))
+                              '''
                               pdf_extract_table_info(pdf_file)
                               merged_img = img_merge(pdf_to_jpg(pdf_file))
                               word_list = extract_txt(merged_img)
                               print("word_list="+str(word_list))
+                              
 
                               def isEnglishOrKorean(input_s):
                                   k_count = 0
@@ -372,7 +374,7 @@ def run():
                               else:
                                   summarized_pages=summarzied_eng(word_list)
                                   #print(summarized_pages)
-
+                              '''
                           print(period + " " + classroom)
                           Class(number=realClassNum, title=className,subnum=classNum, idnum= realClassNum+classNum, professor=professor, downloadPath=downloadPath, filename=new_filename, crawled_time=crawled_time, classroom=classroom, period=period).save()
 
