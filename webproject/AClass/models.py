@@ -14,9 +14,11 @@ class Class(models.Model):
     filename = models.CharField(max_length=200, null=True, default='')
     crawled_time = models.DateTimeField(auto_now=True,null=True)
     classroom = models.CharField(max_length=200, null=True, default='')
-    period = models.CharField(max_length=200, null=True, default='')
+    period_start = models.CharField(max_length=200, null=True, default='')
+    period_end = models.CharField(max_length=200, null=True, default='')
 
 class Todo(models.Model):
+    title = models.CharField(max_length=200, null=True, default='')
     idnums = models.CharField(max_length=200, null=True, default='')
     days = models.CharField(max_length=50,null=False,default='')
     activities = models.CharField(max_length=50,null=True,default='')
@@ -25,9 +27,11 @@ class Todo(models.Model):
     Materials = models.CharField(max_length=50,null=True,default='')
     Assignments = models.CharField(max_length=50,null=True,default='')
     classroom = models.CharField(max_length=200, null=True, default='')
-    period = models.CharField(max_length=200, null=True, default='')
+    period_start = models.CharField(max_length=200, null=True, default='')
+    period_end = models.CharField(max_length=200, null=True, default='')
 
-    '''
+
+'''
     idnums = models.ForeignKey(Class, on_delete=models.CASCADE)
     classroom = models.ForeignKey(Class, on_delete=models.CASCADE, related_name='Classroom')
     period = models.ForeignKey(Class, on_delete=models.CASCADE, related_name='Period')'''
