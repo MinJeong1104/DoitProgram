@@ -17,7 +17,7 @@ class Class(models.Model):
     period = models.CharField(max_length=200, null=True, default='')
 
 class Todo(models.Model):
-    idnums = models.ForeignKey(Class, on_delete=models.CASCADE)
+    idnums = models.CharField(max_length=200, null=True, default='')
     days = models.CharField(max_length=50,null=False,default='', primary_key=True)
     activities = models.CharField(max_length=50,null=True,default='')
     weeks = models.CharField(max_length=50, null=True, default='')
@@ -27,5 +27,7 @@ class Todo(models.Model):
     classroom = models.CharField(max_length=200, null=True, default='')
     period = models.CharField(max_length=200, null=True, default='')
 
-    '''classroom = models.ForeignKey(Class, on_delete=models.CASCADE, related_name='Classroom')
+    '''
+    idnums = models.ForeignKey(Class, on_delete=models.CASCADE)
+    classroom = models.ForeignKey(Class, on_delete=models.CASCADE, related_name='Classroom')
     period = models.ForeignKey(Class, on_delete=models.CASCADE, related_name='Period')'''
