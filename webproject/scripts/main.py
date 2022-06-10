@@ -57,7 +57,7 @@ def run():
       activities=record['주요강의내용'],
       period_start='3:30 PM ',
       period_end='4:45 PM',
-      title='역사철학'
+      title='역사철학',
       classroom='포356'
   ) for record in df_records]
 
