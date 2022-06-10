@@ -56,7 +56,7 @@ def run():
       days=record['날짜'],
       activities=record['주요강의내용'],
       period='3:30-4:45',
-      classrom='포356'
+      classroom='포356'
   ) for record in df_records]
 
   Todo.objects.bulk_create(instances)
